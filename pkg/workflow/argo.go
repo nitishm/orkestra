@@ -329,6 +329,9 @@ func (a *argo) generateAppDAGTemplates(ctx context.Context, g *v1alpha1.Applicat
 				hr.Spec.RepoURL = repo
 			}
 
+			if app.Spec.DisableWait {
+				hr.Spec.Wait = boolToBoolPtr(false)
+			}
 			tApp := v1alpha12.Template{
 				Name: pkg.ConvertToDNS1123(app.Name),
 				DAG: &v1alpha12.DAGTemplate{
@@ -379,6 +382,10 @@ func (a *argo) generateSubchartAndAppDAGTasks(ctx context.Context, g *v1alpha1.A
 			HeritageLabel:  Project,
 		}
 
+		if app.Spec.DisableWait {
+			hr.Spec.Wait = boolToBoolPtr(false)
+		}
+
 		task := v1alpha12.DAGTask{
 			Name:     pkg.ConvertToDNS1123(scName),
 			Template: helmReleaseExecutor,
@@ -419,6 +426,10 @@ func (a *argo) generateSubchartAndAppDAGTasks(ctx context.Context, g *v1alpha1.A
 	}
 
 	hr.Spec.RepoURL = repo
+
+	if app.Spec.DisableWait {
+		hr.Spec.Wait = boolToBoolPtr(false)
+	}
 
 	// Force disable all subchart for the staged application chart
 	// to prevent duplication and possible collision of deployed resources

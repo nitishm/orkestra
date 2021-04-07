@@ -118,6 +118,8 @@ spec:
                           description: DisableOpenAPIValidation controls whether OpenAPI
                             validation is enforced.
                           type: boolean
+                        disableWait:
+                          type: boolean
                         forceUpgrade:
                           description: Force will mark this Helm release to `--force`
                             upgrades. This forces the resource updates through delete/recreate

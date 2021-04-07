@@ -36,6 +36,8 @@ type ApplicationSpec struct {
 	// Artifactory for instance utilizes folders to store charts
 	RepoPath string `json:"repoPath,omitempty"`
 
+	DisableWait bool `json:"disableWait,omitempty"`
+
 	helmopv1.HelmReleaseSpec `json:",inline"`
 }
 

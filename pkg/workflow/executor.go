@@ -40,9 +40,10 @@ func keptnExecutor() v1alpha13.Template {
 		},
 		Outputs: v1alpha13.Outputs{},
 		Container: &corev1.Container{
-			Name:  ExecutorName,
-			Image: fmt.Sprintf("%s:%s", KeptnExecutor, KeptnExecutorImageTag),
-			Args:  executorArgs,
+			Name:            ExecutorName,
+			ImagePullPolicy: corev1.PullAlways,
+			Image:           fmt.Sprintf("%s:%s", KeptnExecutor, KeptnExecutorImageTag),
+			Args:            executorArgs,
 		},
 	}
 }
@@ -71,9 +72,10 @@ func defaultExecutor() v1alpha13.Template {
 		},
 		Outputs: v1alpha13.Outputs{},
 		Container: &corev1.Container{
-			Name:  ExecutorName,
-			Image: fmt.Sprintf("%s:%s", ExecutorImage, ExecutorImageTag),
-			Args:  executorArgs,
+			Name:            ExecutorName,
+			ImagePullPolicy: corev1.PullAlways,
+			Image:           fmt.Sprintf("%s:%s", ExecutorImage, ExecutorImageTag),
+			Args:            executorArgs,
 		},
 	}
 }

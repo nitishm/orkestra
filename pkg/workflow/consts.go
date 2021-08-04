@@ -17,6 +17,9 @@ const (
 	ExecutorImage    = "azureorkestra/executor"
 	ExecutorImageTag = "v0.4.1"
 
+	KeptnExecutor         = "azureorkestra/keptn-executor"
+	KeptnExecutorImageTag = "v0.1.0"
+
 	ChartMuseumName = "chartmuseum"
 
 	Project        = "orkestra"

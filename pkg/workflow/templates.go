@@ -89,6 +89,7 @@ func generateAppDAGTemplates(appGroup *v1alpha1.ApplicationGroup, namespace stri
 			ts = append(ts, tApp)
 		}
 	}
+
 	return ts, nil
 }
 
@@ -169,6 +170,10 @@ func appDAGTaskBuilder(name string, timeout, hrStr *v1alpha13.AnyString) v1alpha
 				{
 					Name:  TimeoutArg,
 					Value: timeout,
+				},
+				{
+					Name:  "action",
+					Value: utils.ToAnyStringPtr("install"),
 				},
 			},
 		},

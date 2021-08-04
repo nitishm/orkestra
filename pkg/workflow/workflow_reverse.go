@@ -130,6 +130,10 @@ func (wc *ReverseWorkflowClient) generateWorkflow() (*v1alpha13.Template, error)
 							Name:  HelmReleaseArg,
 							Value: utils.ToAnyStringPtr(base64.StdEncoding.EncodeToString([]byte(utils.HrToYaml(hr)))),
 						},
+						{
+							Name:  "action",
+							Value: utils.ToAnyStringPtr("delete"),
+						},
 					},
 				},
 				Dependencies: utils.ConvertSliceToDNS1123(getTaskNamesFromHelmReleases(prevbucket)),
